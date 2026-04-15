@@ -16,8 +16,8 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   { href: "/", label: "Home", icon: <Home className="h-4 w-4" /> },
-  { href: "/signup", label: "Sign up", icon: <UserPlus className="h-4 w-4" /> },
-  { href: "/signin", label: "Sign in", icon: <LogIn className="h-4 w-4" /> },
+  { href: "/signup/regular", label: "Regular course", icon: <UserPlus className="h-4 w-4" /> },
+  { href: "/signin/ncvet", label: "Ncvet course", icon: <LogIn className="h-4 w-4" /> },
 ];
 
 function isActivePath(pathname: string, href: string) {

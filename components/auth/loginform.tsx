@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useStudentAuthStore } from "@/store/student-auth-store";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -146,6 +147,13 @@ export default function StudentAuth() {
       console.log("ACCESS TOKEN:", json.data.access_token);
 
       setMessage("Login successful ✅");
+
+      localStorage.setItem("accessToken", json.data.access_token);
+      localStorage.setItem("expiresAt", json.data.expires_at);
+
+      useStudentAuthStore
+        .getState()
+        .setAccessToken(json.data.access_token, json.data.expires_in);
 
       setTimeout(() => {
         router.push("/learner/dashboard");
